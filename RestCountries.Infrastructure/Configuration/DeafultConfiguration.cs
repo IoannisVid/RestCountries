@@ -15,6 +15,7 @@ namespace RestCountries.Infrastructure.Configuration
             });
 
             services.Configure<HttpClientSettings>(configuration!.GetSection(nameof(HttpClientSettings)));
+            services.Configure<ApiSettings>(configuration!.GetSection(nameof(ApiSettings)));
 
             return services;
         }

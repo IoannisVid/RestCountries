@@ -2,8 +2,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDefaultConfiguration();
-builder.Services.AddMemoryCache();
-
+builder.Services.AddHttpConfiguration();
 builder.Services.AddControllers();
 builder.Services.AddMemoryCache();
 builder.Services.AddEndpointsApiExplorer();
