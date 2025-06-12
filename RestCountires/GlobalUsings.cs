@@ -1,5 +1,6 @@
 ﻿// Global using directives
 
-global using RestCountries.Infrastructure;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Caching.Memory;
+global using RestCountries.Application.Dtos;
 global using RestCountries.Infrastructure.Configuration;
-global using Microsoft.EntityFrameworkCore;
