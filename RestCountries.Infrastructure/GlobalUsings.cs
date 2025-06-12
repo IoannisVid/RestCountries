@@ -8,3 +8,4 @@ global using Polly;
 global using Polly.Extensions.Http;
 global using RestCountries.Core.Entities;
 global using RestCountries.Core.Settings;
+global using RestCountries.Core.Interfaces;

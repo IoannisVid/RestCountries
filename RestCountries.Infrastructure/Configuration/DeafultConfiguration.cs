@@ -1,4 +1,5 @@
 ﻿using RestCountries.Core.Settings;
+using RestCountries.Infrastructure.Repository;
 
 namespace RestCountries.Infrastructure.Configuration
 {
@@ -14,6 +15,7 @@ namespace RestCountries.Infrastructure.Configuration
                 options.UseSqlServer(connectionString);
             });
 
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.Configure<HttpClientSettings>(configuration!.GetSection(nameof(HttpClientSettings)));
             services.Configure<ApiSettings>(configuration!.GetSection(nameof(ApiSettings)));
 
