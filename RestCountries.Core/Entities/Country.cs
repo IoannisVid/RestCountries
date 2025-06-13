@@ -11,7 +11,6 @@
         [Required(ErrorMessage = "Capital of Country is required")]
         public string CountryCapital { get; set; }
 
-        public ICollection<Border> Borders { get; } = [];
-
+        public ICollection<Border> Borders { get; set; } = new List<Border>();
     }
 }

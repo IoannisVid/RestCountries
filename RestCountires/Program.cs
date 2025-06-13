@@ -6,6 +6,7 @@ builder.Services.AddHttpConfiguration();
 builder.Services.AddControllers();
 builder.Services.AddMemoryCache();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
