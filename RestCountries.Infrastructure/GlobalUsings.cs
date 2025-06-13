@@ -9,3 +9,5 @@ global using Polly.Extensions.Http;
 global using RestCountries.Core.Entities;
 global using RestCountries.Core.Settings;
 global using RestCountries.Core.Interfaces;
+global using RestCountries.Application.Services;
+global using RestCountries.Infrastructure.Repository;

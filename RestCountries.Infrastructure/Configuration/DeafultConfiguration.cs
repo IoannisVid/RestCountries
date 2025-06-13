@@ -1,6 +1,4 @@
-﻿using RestCountries.Core.Settings;
-using RestCountries.Infrastructure.Repository;
-
+﻿
 namespace RestCountries.Infrastructure.Configuration
 {
     public static class DefaultConfiguration
@@ -19,6 +17,7 @@ namespace RestCountries.Infrastructure.Configuration
             services.Configure<HttpClientSettings>(configuration!.GetSection(nameof(HttpClientSettings)));
             services.Configure<ApiSettings>(configuration!.GetSection(nameof(ApiSettings)));
 
+            services.AddSingleton<ISecondHighestService, SecondHighestService>();
             return services;
         }
     }
