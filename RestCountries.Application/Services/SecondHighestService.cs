@@ -1,5 +1,4 @@
-﻿using RestCountries.Application.Common.Exceptions;
-
+﻿
 namespace RestCountries.Application.Services
 {
     public class SecondHighestService : ISecondHighestService
@@ -12,7 +11,7 @@ namespace RestCountries.Application.Services
                 throw new NotFoundException("Data array is empty");
             var dat = reqData.OrderByDescending(x => x).Distinct().ToList();
             if (dat.Count < 2)
-                throw new BadRequestException("There is only one number");
+                throw new BadRequestException("There is only one unique number");
             return Task.FromResult(dat[1]);
         }
     }
