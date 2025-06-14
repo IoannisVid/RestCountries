@@ -5,15 +5,13 @@ namespace RestCountries.Application.Services
     public class CountriesService : ICountriesService
     {
         private readonly HttpClient _httpClient;
-        private readonly ILogger<CountriesService> _logger;
         private readonly IMemoryCache _memoryCache;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CountriesService(ILogger<CountriesService> logger, IHttpClientFactory httpClientFactory, IMemoryCache memoryCache, IUnitOfWork unitOfWork, IMapper mapper)
+        public CountriesService(IHttpClientFactory httpClientFactory, IMemoryCache memoryCache, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _httpClient = httpClientFactory.CreateClient("Client");
-            _logger = logger;
             _memoryCache = memoryCache;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
