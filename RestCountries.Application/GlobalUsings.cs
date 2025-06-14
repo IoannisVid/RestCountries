@@ -7,3 +7,4 @@ global using Microsoft.Extensions.Caching.Memory;
 global using Microsoft.Extensions.Logging;
 global using RestCountries.Application.Dtos;
 global using RestCountries.Core.Entities;
+global using AutoMapper;

@@ -9,11 +9,13 @@ namespace RestCountries.Api.Controllers
         private readonly ILogger<RestController> _logger;
         private readonly IMemoryCache _memoryCache;
         private readonly ISecondHighestService _secondHighestService;
-        public RestController(ILogger<RestController> logger,IMemoryCache memoryCache, ISecondHighestService sndHighService)
+        private readonly ICountriesService _countriesService;
+        public RestController(ILogger<RestController> logger,IMemoryCache memoryCache, ISecondHighestService sndHighService, ICountriesService countriesService)
         {
             _logger = logger;
             _memoryCache = memoryCache;
             _secondHighestService = sndHighService;
+            _countriesService = countriesService;
         }
 
         [HttpPost("second")]
@@ -26,8 +28,8 @@ namespace RestCountries.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCountries()
         {
-            return Ok();
+            var countries = await _countriesService.GetCountries();
+            return Ok(countries);
         }
-
     }
 }

@@ -1,9 +1,4 @@
-﻿
-
-using AutoMapper;
-using RestCountries.Application.Dtos;
-
-namespace RestCountries.Application.Services
+﻿namespace RestCountries.Application.Services
 {
     public class CountriesService : ICountriesService
     {
@@ -60,7 +55,7 @@ namespace RestCountries.Application.Services
         private async Task<List<Country>> InsertCountries(List<RestCountry> restCountries)
         {
             List<Country> countries = new List<Country>();
-            foreach(var cntry in restCountries)
+            foreach (var cntry in restCountries)
             {
                 var country = new Country
                 {

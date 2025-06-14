@@ -1,5 +1,4 @@
-﻿
-namespace RestCountries.Infrastructure.Configuration
+﻿namespace RestCountries.Infrastructure.Configuration
 {
     public static class DefaultConfiguration
     {
@@ -18,6 +17,7 @@ namespace RestCountries.Infrastructure.Configuration
             services.Configure<ApiSettings>(configuration!.GetSection(nameof(ApiSettings)));
 
             services.AddSingleton<ISecondHighestService, SecondHighestService>();
+            services.AddScoped<ICountriesService, CountriesService>();
             return services;
         }
     }
