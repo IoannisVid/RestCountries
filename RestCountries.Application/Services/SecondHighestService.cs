@@ -6,7 +6,7 @@
 
         public Task<int> GetSecondHighest(IEnumerable<int> reqData)
         {
-            if (reqData.Any())
+            if (!reqData.Any())
                 throw new Exception("Data array is empty");
             var dat = reqData.OrderByDescending(x => x).Distinct().ToList();
             if (dat.Count < 2)

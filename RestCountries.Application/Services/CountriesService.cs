@@ -19,10 +19,9 @@
 
         public async Task<IReadOnlyCollection<CountryDto>> GetCountries()
         {
-            List<CountryDto> countries;
-            if (!_memoryCache.TryGetValue("Countries", out countries))
+            if (!_memoryCache.TryGetValue("Countries", out List<CountryDto> countries))
             {
-                var data = await _unitOfWork.Countries.GetAllAsync();
+                var data = await _unitOfWork.Countries.GetAllAsync(x => x.Borders);
                 if (data.Any())
                 {
                     countries = _mapper.Map<List<CountryDto>>(data);
@@ -30,7 +29,7 @@
                 else
                 {
                     var restCountries = await GetRestCountries();
-                    var dat = InsertCountries(restCountries);
+                    var dat = await InsertCountries(restCountries);
                     countries = _mapper.Map<List<CountryDto>>(dat);
                 }
                 AddCountriesInCache(countries);
@@ -60,7 +59,7 @@
                 var country = new Country
                 {
                     CountryName = cntry.Country.Common,
-                    CountryCapital = cntry.Capital.FirstOrDefault(),
+                    CountryCapital = cntry.Capital?.FirstOrDefault() ?? "",
                     Borders = cntry.Borders.Select(code => new Border
                     {
                         BorderCode = code
