@@ -1,4 +1,6 @@
-﻿namespace RestCountries.Application.Services
+﻿using RestCountries.Application.Common.Exceptions;
+
+namespace RestCountries.Application.Services
 {
     public class CountriesService : ICountriesService
     {
@@ -29,6 +31,8 @@
                 else
                 {
                     var restCountries = await GetRestCountries();
+                    if (restCountries.Count == 0)
+                        throw new NotFoundException("No countries where found through the web api call");
                     var dat = await InsertCountries(restCountries);
                     countries = _mapper.Map<List<CountryDto>>(dat);
                 }
